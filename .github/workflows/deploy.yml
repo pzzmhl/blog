@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -25,7 +26,7 @@ jobs:
         with:
           node-version: 22
       - name: Install Dependencies
-        run: npm ci --ignore-engines
+        run: npm install --no-engine-strict
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
